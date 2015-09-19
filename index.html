@@ -44,7 +44,7 @@ $(function () {
                     setInterval(function () {
                         var x = (new Date()).getTime(), // current time
                             //y = Math.round(Math.random() * 100);
-                            y = response_data.feeds[0].field1;
+                            y = Number(response_data.feeds[0].field1);
                         series.addPoint([x, y], true, true);
                     }, 5000);
                 }
