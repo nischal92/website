@@ -43,6 +43,20 @@ $(function () {
                                 console.log(Number(response_data.feeds[0].field1));
                             }
                         }
+                        var value = Number(response_data.feeds[0].field1);
+                        var image_data = document.getElementById("trash_image");
+                        if(value < 250){
+                            image_data.setAttribute("src","image1.png");
+                        }
+                        else if(value < 500){
+                            image_data.setAttribute("src","image2.png");   
+                        }
+                        else if(value < 750){
+                            image_data.setAttribute("src","image3.png");
+                        }
+                        else{
+                            image_data.setAttribute("src","image4.png");
+                        }
                         var x = (new Date()).getTime(), // current time
                             //y = Math.round(Math.random() * 100);
                             y = Number(response_data.feeds[0].field1);
@@ -70,7 +84,7 @@ $(function () {
         },
 
         title : {
-            text : 'Live random data'
+            text : 'Live Pressure Sensor Data'
         },
 
         exporting: {
