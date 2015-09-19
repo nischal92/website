@@ -37,6 +37,7 @@ $(function () {
 				        response_data = JSON.parse(xmlhttp.responseText);
 				        if (window.console) {
 				            console.log(response_data);
+                            console.log(Number(response_data.feeds[0].field1));
 				        }
 				    }
                     // set up the updating of the chart each second
