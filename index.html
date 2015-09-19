@@ -18,31 +18,31 @@ $(function () {
         chart : {
             events : {
                 load : function () {
-                	var xmlhttp;
-    				var response_data;
-    				var url = "http://api.thingspeak.com/channels/56683/feed.json?results=1&key=W1BJLA837IOOJR99";
-				    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-				        xmlhttp = new XMLHttpRequest();
-				    } else { // code for IE6, IE5
-				        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				    }
-				    xmlhttp.open("GET", url, false);
-				    xmlhttp.send();
-				    if (xmlhttp.status >= 500) {
-				        //Error Messages go here
-				        if (window.console) {
-				            console.log("Invalid url!");
-				        }
-				    } else {
-				        response_data = JSON.parse(xmlhttp.responseText);
-				        if (window.console) {
-				            console.log(response_data);
-                            console.log(Number(response_data.feeds[0].field1));
-				        }
-				    }
-                    // set up the updating of the chart each second
-                    var series = this.series[0];
-                    setInterval(function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                        var xmlhttp;
+                        var response_data;
+                        var url = "http://api.thingspeak.com/channels/56683/feed.json?results=1&key=W1BJLA837IOOJR99";
+                        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                            xmlhttp = new XMLHttpRequest();
+                        } else { // code for IE6, IE5
+                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xmlhttp.open("GET", url, false);
+                        xmlhttp.send();
+                        if (xmlhttp.status >= 500) {
+                            //Error Messages go here
+                            if (window.console) {
+                                console.log("Invalid url!");
+                            }
+                        } else {
+                            response_data = JSON.parse(xmlhttp.responseText);
+                            if (window.console) {
+                                console.log(response_data);
+                                console.log(Number(response_data.feeds[0].field1));
+                            }
+                        }
                         var x = (new Date()).getTime(), // current time
                             //y = Math.round(Math.random() * 100);
                             y = Number(response_data.feeds[0].field1);
